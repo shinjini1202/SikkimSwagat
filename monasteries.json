@@ -1,0 +1,30 @@
+[
+    {
+      "name": "Rumtek Monastery",
+      "categories": ["religious", "architecture", "history", "spiritual"],
+      "keywords": ["Rumtek", "Dharma Chakra", "Kagyu", "monastery", "largest", "Tibetan architecture", "buddha"],
+      "description": "The largest monastery in Sikkim, it is the center of the Kagyu lineage and features stunning Tibetan architecture. Perfect for history and spiritual travelers.",
+      "link": "rumtek.html"
+    },
+    {
+      "name": "Pemayangtse Monastery",
+      "categories": ["oldest", "art", "history", "spiritual"],
+      "keywords": ["Pemayangtse", "Perfect Sublime Lotus", "oldest", "Nyingma sect", "wooden sculpture", "buddha", "Lama Lhatsün Chempo", "Chempo"],
+      "description": "One of the oldest and most important monasteries in Sikkim, known for its intricate wooden sculpture of Guru Padmasambhava’s heavenly palace. Ideal for art and history lovers.",
+      "link": "pemayangtase.html"
+    },
+    {
+      "name": "Enchey Monastery",
+      "categories": ["religious", "history", "spiritual"],
+      "keywords": ["Enchey", "monastery", "gumpa", "Gangtok","gold statue"],
+      "description": "A popular monastery in Gangtok, known for its serene atmosphere and traditional masked dances.",
+      "link": "enchey.html"
+    },
+    {
+      "name": "Tashiding Monastery",
+      "categories": ["religious", "history", "spiritual", "Pilgrimage"],
+      "keywords": ["Tashiding", "monastery", "gumpa", "sacred", "holy", "haunted"],
+      "description": "Considered the most sacred monastery in Sikkim, it's famous for its holy stupa and the annual Bumchu festival.",
+      "link": "tashiding.html"
+    }
+  ]

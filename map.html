@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sikkim Monasteries Map</title>
+  <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <div class="map-layout">
+        <div class="sidebar">
+      <h2>Sikkim</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="map.html">Attractions</a></li>
+        <li><a href="#">Plan Your Trip</a></li>
+      </ul>
+    </div>
+
+        <div class="map-container">
+      <input type="text" class="search-box" placeholder="AI Smart Search">
+            <div id="search-results"></div>
+      <div id="map" style="height: 600px; width: 100%;"></div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Map
+    var map = L.map('map');
+
+    // Add OpenStreetMap Tile Layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // ✅ Custom Red Icon
+    var redIcon = new L.Icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+      shadowUrl: 'https://unpkg.com/leaflet/dist/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+
+    // Monastery Data (with photos + detail page)
+    var monasteries = [
+      { 
+        name: "Rumtek Monastery", 
+        coords: [27.33, 88.62], 
+        page: "rumtek.html",
+        img: " images/Rumtek Monastery.jpg"
+      },
+      { 
+        name: "Enchey Monastery", 
+        coords: [27.34, 88.62], 
+        page: "enchey.html",
+        img: "images/enchey.jpg"
+      },
+      { 
+        name: "Pemayangtse Monastery", 
+        coords: [27.28, 88.25], 
+        page: "pemyangtase.html",
+        img: "images/pemayangtse.jpg"
+      },
+      { 
+        name: "Tashiding Monastery", 
+        coords: [27.25, 88.30], 
+        page: "tashiding.html",
+        img: "images/tashiding.jpg"
+      }
+    ];
+
+    // ✅ Add markers to group
+    var markerGroup = L.featureGroup();
+
+    monasteries.forEach(m => {
+      var popupContent = `
+        <b>${m.name}</b><br>
+        <img src="${m.img}" alt="${m.name}" /><br>
+        <a href="${m.page}" target="_blank">View Details</a>
+      `;
+      var marker = L.marker(m.coords, { icon: redIcon })
+        .bindPopup(popupContent);
+      markerGroup.addLayer(marker);
+    });
+
+    markerGroup.addTo(map);
+
+    // ✅ Fit map to markers
+    map.fitBounds(markerGroup.getBounds());
+
+    // 🔎 New Search functionality that uses the JSON file
+    const searchBox = document.querySelector('.search-box');
+    const searchResultsContainer = document.getElementById('search-results');
+    let monasteryData = [];
+
+    // Fetch the JSON data once when the page loads
+    fetch('monasteries.json')
+      .then(response => response.json())
+      .then(data => {
+        monasteryData = data;
+        console.log('Monastery data loaded:', monasteryData);
+      })
+      .catch(error => {
+        console.error('Error fetching monastery data:', error);
+      });
+
+    searchBox.addEventListener('keyup', function (e) {
+      const query = e.target.value.toLowerCase().trim();
+      searchResultsContainer.innerHTML = ''; // Clear results
+
+      if (query.length > 0) {
+        const filteredResults = monasteryData.filter(m => {
+          const name = m.name.toLowerCase();
+          const categories = m.categories.map(cat => cat.toLowerCase()).join(' ');
+          const keywords = m.keywords.map(kw => kw.toLowerCase()).join(' ');
+          
+          return name.includes(query) || categories.includes(query) || keywords.includes(query);
+        });
+        
+        if (filteredResults.length > 0) {
+          filteredResults.forEach(m => {
+            const resultLink = document.createElement('a');
+            resultLink.href = m.link; // Use the 'link' property from the JSON file
+            resultLink.textContent = m.name;
+            resultLink.classList.add('search-result-link');
+            searchResultsContainer.appendChild(resultLink);
+          });
+        }
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumtek Monastery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #d4f0d2, #b2e0b0);
+      color: #2d3a2e;
+    }
+
+    .event-navbar {
+      background-color: #2e7d32;
+      padding: 15px 30px;
+    }
+
+    .event-navbar a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .info-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #ffffffd9;
+      padding: 25px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .info-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #1b5e20;
+      margin-bottom: 20px;
+    }
+
+    .info-section h3 {
+      margin-top: 25px;
+      color: #2e7d32;
+      border-left: 5px solid #66bb6a;
+      padding-left: 10px;
+    }
+
+    /* Flexbox layout for alternating image and text */
+    .section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .section img {
+      width: 350px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    .section .text {
+      flex: 1;
+    }
+
+    .right-img {
+      flex-direction: row;
+    }
+
+    .left-img {
+      flex-direction: row-reverse;
+    }
+
+    /* Responsive for mobile */
+    @media (max-width: 768px) {
+      .section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .section img {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="event-navbar">
+    <div class="nav-item"><h3><a href="map.html">← Back to Map</a></h3></div>
+  </nav>
+
+  <section class="info-section">
+    <h2> Tashiding Monastery</h2>
+
+    <div class="section right-img">
+      <div class="text">
+        <p>Tashiding Monastery, founded in the 17th century, is regarded as one of the most sacred monasteries in Sikkim where devotees believe that visiting and offering prayers can cleanse one’s sins and bring blessings.</p>
+      </div>
+      <img src="images/tashiding.jpg" alt="tashiding">
+    </div>
+
+    <h3>Name</h3>
+    <p><strong>Tashiding  Monastery</strong></p>
+
+    <h3>History</h3>
+    <div class="section left-img">
+      <div class="text">
+        <p>
+          Built in 1641 by Ngadak Sempa Chempo Phunshok Rigzing, a follower of Guru Padmasambhava,
+Tashiding is one of Sikkim’s holiest monasteries. It belongs to the Nyingma sect of Tibetan Buddhism.
+The name “Tashiding” means “The Devoted Central Glory”, symbolizing its spiritual importance.
+        </p>
+      </div>
+      <img src="images/tashiding1.jpg" alt="Tashiding Monastery">
+    </div>
+
+    <h3>Inside the Monastery</h3>
+    <div class="section right-img">
+      <div class="text">
+        <p>
+          The monastery houses sacred Buddhist relics, old scriptures, and beautiful frescoes. The main
+attraction is the <strong>Thongwa Rangdol chorten</strong>, believed to wash away sins.
+        </p>
+      </div>
+      <img src="images/tashiding2.jpg" alt="Tashiding Monastery">
+    </div>
+
+    <h3>Fun Facts</h3>
+    <div class="section left-img">
+      <div class="text">
+        <ul>
+          <li>Tashiding is said to be blessed directly by Guru Padmasambhava himself.</li>
+          <li>From the monastery, you get panoramic views of Mount Kanchenjunga.</li>
+          <li>It is one of the four most sacred Buddhist pilgrimage sites in Sikkim.</li>
+        </ul>
+      </div>
+      <img src="images/tashiding3.jpg" alt="Tashiding Monastery">
+    </div>
+
+    <h3>Festivals</h3>
+    <div class="section right-img">
+      <div class="text">
+        <p>
+          The monastery is famous for the <strong>Bumchu Festival</strong>, 
+          with masked dances and rituals.where a sacred pot of holy water is opened
+annually to predict Sikkim’s future. Losar (Tibetan New Year) is also celebrated here with rituals and
+prayers.
+        </p>
+      </div>
+      <img src="images/tashiding4.jpg" alt="Tashiding Monastery">
+    </div>
+    
+  
+  
+  
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <button id="logout-button">Logout</button>
+    </div>
+    <div class="dashboard-grid">
+        <div class="dashboard-box"><h3>Edit Events</h3></div>
+        <div class="dashboard-box"><h3>Edit Dates</h3></div>
+        <div class="dashboard-box"><h3>Edit Archives</h3></div>
+        <div class="dashboard-box"><h3>Add/Delete Monasteries</h3></div>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script>
+        const logoutButton = document.getElementById('logout-button');
+    
+        // This will redirect to the home page when the logout button is clicked
+        logoutButton.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

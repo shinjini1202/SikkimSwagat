@@ -1,0 +1,311 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* General Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+ font-family: 'Poppins', sans-serif; 
+ line-height: 1.6; 
+ background-color: #f9f9f9;
+ color: #222;
+}
+
+/* Navbar */
+.navbar {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 15px 30px;
+ background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+ color: white;
+ box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.navbar ul { list-style: none; display: flex; gap: 25px; }
+.navbar ul li a { 
+ text-decoration: none; 
+ color: white; 
+ font-weight: 600; 
+ transition: color 0.3s ease; 
+}
+.navbar ul li a:hover { color: #ffd166; }
+
+/* Hero Section */
+.hero {
+ height: 100vh;
+ background: url("sikkim.jpg") no-repeat center center/cover;
+ color: white;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+}
+.hero h1 { 
+ font-size: 64px;
+ font-weight: 700;
+ margin-bottom: 20px;
+ text-transform: uppercase;
+ letter-spacing: 2px;
+ text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+}
+.hero p { 
+ margin: 10px 0; 
+ font-size: 22px; 
+ font-weight: 400;
+ text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+.hero button { 
+ padding: 12px 25px; 
+ font-size: 18px; 
+ background: #2d6a4f; 
+ color: white; 
+ border: none; 
+ border-radius: 10px; 
+ cursor: pointer; 
+ font-weight: 600;
+ transition: 0.3s ease;
+}
+.hero button:hover { background: #40916c; }
+
+/* Footer */
+footer { 
+ text-align: center; 
+ padding: 15px; 
+ background: #1b4332; 
+ color: white; 
+ font-size: 14px;
+ letter-spacing: 1px;
+}
+
+/* Map Layout */
+.map-layout { display: flex; height: 100vh; }
+.sidebar {
+ width: 240px;
+ background: #1b4332;
+ color: white;
+ padding: 25px 20px;
+ font-weight: 500;
+}
+.sidebar h2 { 
+ margin-bottom: 20px; 
+ font-size: 22px;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+}
+.sidebar a { 
+ color: white; 
+ text-decoration: none; 
+ display: block; 
+ margin: 12px 0; 
+ font-weight: 500;
+ transition: color 0.3s ease;
+}
+.sidebar a:hover { color: #ffd166; }
+
+.map-container { 
+ flex: 1; 
+ padding: 20px; 
+ background: #edf2f4;
+ position: relative; /* Added for search bar positioning */
+}
+#map { 
+ height: 100%; 
+ border-radius: 12px; 
+ box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+}
+.search-box { 
+ width: 100%; 
+ padding: 12px; 
+ margin-bottom: 15px; 
+ border-radius: 8px; 
+ border: 1px solid #ccc; 
+ font-size: 15px;
+}
+
+/* Popup Styles */
+.leaflet-popup-content {
+ font-family: 'Poppins', sans-serif;
+ font-size: 14px;
+ color: #222;
+ font-weight: 500;
+}
+.leaflet-popup-content img {
+ width: 200px;
+ height: auto;
+ border-radius: 10px;
+ margin-top: 8px;
+ box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+.leaflet-popup-content a {
+ display: inline-block;
+ margin-top: 6px;
+ color: #2d6a4f;
+ font-weight: 600;
+ text-decoration: none;
+}
+.leaflet-popup-content a:hover {
+ text-decoration: underline;
+}
+
+/* AI-Powered Search & Categorization styles for index.html */
+.search-section {
+ max-width: 800px;
+ margin: 40px auto;
+ padding: 20px;
+ background-color: #f7f9f7;
+ border-radius: 8px;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#search-input {
+ width: 100%;
+ padding: 12px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ font-size: 1rem;
+}
+
+#results-container {
+ margin-top: 20px;
+ border-top: 1px solid #eee;
+ padding-top: 15px;
+}
+
+.search-result {
+ padding: 15px;
+ border-bottom: 1px solid #ddd;
+ display: block;
+ text-decoration: none;
+ color: #333;
+ transition: background-color 0.2s ease;
+}
+
+.search-result:hover {
+ background-color: #e9f5e9;
+}
+
+.search-result h3 {
+ margin: 0 0 5px 0;
+ color: #2e7d32;
+}
+
+.search-result p {
+ margin: 0;
+ font-size: 0.9rem;
+}
+
+/* Autocomplete Search styles for map.html */
+#search-results {
+ position: absolute;
+ top: 70px; /* Adjust this to sit right below the search box */
+ left: 20px;
+ right: 20px;
+ background-color: white;
+ border: 1px solid #ccc;
+ border-top: none;
+ max-height: 200px;
+ overflow-y: auto;
+ z-index: 1000;
+}
+
+.search-result-link {
+ display: block;
+ padding: 10px 15px;
+ text-decoration: none;
+ color: #333;
+ transition: background-color 0.2s ease;
+}
+
+.search-result-link:hover {
+ background-color: #f0f0f0;
+}
+
+/* Admin Login and Dashboard Styles */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.login-container h2 {
+  margin-bottom: 25px;
+  color: #1b5e20;
+}
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: #2d6a4f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.login-container button:hover {
+  background: #40916c;
+}
+.error-text {
+  color: #e74c3c;
+  margin-top: 15px;
+}
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 40px auto 20px;
+  padding: 20px;
+  background: #f0f4f0;
+  border-radius: 10px;
+}
+.dashboard-header h2 {
+  color: #1b5e20;
+}
+#logout-button {
+  padding: 8px 15px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.dashboard-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dashboard-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}

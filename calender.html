@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f9f4;
+      color: #2d3a2e;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: #ffffff;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #1b5e20;
+    }
+
+    .filter-btn {
+      display: block;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #a5d6a7;
+      color: #1b5e20;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .filter-btn:hover {
+      background: #81c784;
+      transform: translateX(4px);
+    }
+
+    .filter-btn.active {
+      background: #2e7d32;
+      color: white;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .main h2 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1b5e20;
+    }
+
+    /* Event grid 2×2 */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .event-card {
+      background: linear-gradient(135deg, #a5d6a7, #2e7d32);
+      padding: 25px;
+      border-radius: 14px;
+      color: white;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+      min-height: 160px;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-date {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .event-title {
+      font-size: 1.5rem;
+      margin: 10px 0 8px;
+    }
+
+    .event-desc {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h3>By Monastery</h3>
+    <button class="filter-btn active" onclick="loadEvents('sutra')">Rumtek Monastery</button>
+    <button class="filter-btn" onclick="loadEvents('tibetan')">Pemayangtse Monastery</button>
+    <button class="filter-btn" onclick="loadEvents('palm')">Enchey Monastery</button>
+    <button class="filter-btn" onclick="loadEvents('mongolian')">Tashiding Monastery</button>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+    <h2>Event Calendar</h2>
+    <div class="events-grid" id="events-container">
+      <!-- Events will load dynamically -->
+    </div>
+  </main>
+
+  <script>
+    const eventsData = {
+      sutra: [
+        { date: "5 Nov 25", title: "Lhabab Duchen", desc: "Marks Buddha’s descent from heaven after teaching his mother.<br><strong>Special Attraction-</strong>Tourists see grand butter lamp offerings.</br> " },
+        { date: "20 Dec 25", title: "Gutor Chaam", desc: "A purification ritual before the New Year.<br> <strong>Special Attraction-</strong>Tourists witness elaborate masked dances.</br>  " },
+        { date: " 12 Oct 25", title: "Kathok Chenmo ", desc: "Commemorates the monastery’s revered lineage masters. <br><strong>Special Attraction-</strong> Tourists observe sacred relic displays.</br>" },
+        { date: "27 Sep 25", title: " Puja of Mahakala", desc: " A ritual dedicated to the protector deity Mahakala <br><strong>Special Attraction-</strong> Tourists experience chanting with resonant horns.</br>"},
+      ],
+      tibetan: [
+        { date: "30 Sep 25", title: "Singhe Chaam", desc: " Ritual dance symbolizing the victory of good over evil.<br><strong>Special Attraction -</strong>Tourists see vibrant masked lion dances.</br>" },
+        { date: "Nov 03", title: "Scripture Reading", desc: "Monks reciting ancient texts." },
+        { date: "Nov 05", title: "Local Food Fair", desc: "Celebration with Sikkimese cuisines." },
+        { date: "Nov 06", title: "Peace Rituals", desc: "Prayers for harmony and well-being." }
+      ],
+      mongolian: [
+        { date: "28 Sep 25", title: " Bhumchu Festival", desc: "Ceremonies honoring guardian deities." },
+        { date: "Dec 11", title: "Art Exhibition", desc: "Sacred thangka paintings on display." },
+        { date: "Dec 12", title: "Music & Dance", desc: "Cultural programs by local artists." },
+        { date: "Dec 15", title: "Community Feast", desc: "Sharing food with visitors and monks." }
+      ],
+      palm: [
+        { date: "30 Sep 25", title: "Singhe Chaam", desc: "Ritual dance symbolizing the victory of good over evil.<br><strong>Special Attraction -</strong>Tourists see vibrant masked lion dances.</br>" },
+        { date: "14 Oct 25", title: " Vajrakilaya Puja ", desc: "Sacred prayers to remove obstacles and negativity.<br><strong>Special Attraction -</strong> Tourists witness elaborate tantric rituals." },
+        { date: "19 Dec 25", title: "Detor Chaam", desc: " Cleansing festival held before the New Year for purification.<br><strong>Special Attraction - </strong>Tourists watch dramatic sacred masked dances." },
+        
+      ]
+    };
+
+    function loadEvents(monastery) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Load events
+      const container = document.getElementById("events-container");
+      container.innerHTML = "";
+      eventsData[monastery].forEach(event => {
+        container.innerHTML += `
+          <div class="event-card">
+            <div class="event-date">${event.date}</div>
+            <div class="event-title">${event.title}</div>
+            <div class="event-desc">${event.desc}</div>
+          </div>
+        `;
+      });
+    }
+
+    // Default load
+    loadEvents("sutra");
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

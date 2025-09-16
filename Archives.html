@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archives</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f6f3;
+      color: #2d3a2e;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* Top navbar */
+    nav.event-navbar {
+      background: #1b5e20; /* Deep Green */
+      padding: 15px 30px;
+      color: white;
+    }
+
+    nav.event-navbar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #1b5e20; /* Deep Green */
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      padding: 12px;
+      margin: 5px 0;
+      border-radius: 6px;
+      transition: background 0.3s;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover, .sidebar a.active {
+      background: #2e7d32; /* lighter green highlight */
+    }
+
+    /* Main content area */
+    .content {
+      flex: 1;
+      padding: 30px;
+      background: #e8f5e9; /* Greenish background */
+      border-left: 2px solid #c8e6c9;
+    }
+
+    footer {
+      background: #1b5e20; /* Deep Green */
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navbar -->
+  <nav class="event-navbar">
+    <div class="nav-item"><h3><a href="index.html">Home</a></h3></div>
+  </nav>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="#" class="nav-link active" onclick="showContent('section1')">Illuminated Prajnaparamita Sutra Folio</a>
+      <a href="#" class="nav-link" onclick="showContent('section2')">Tibetan Illuminated Sutra Leaf</a>
+      <a href="#" class="nav-link" onclick="showContent('section3')">Mongolian Protective Deities Scroll
+</a>
+      <a href="#" class="nav-link" onclick="showContent('section4')">Prajnaparamita Palm-Leaf Manuscript
+</a>
+    </div>
+
+    <!-- Content area -->
+    <div class="content" id="content">
+      <h2>Name of Manuscript
+</h2>
+      <p>Select an Manuscript from the left menu to view details.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2030 Sikkim Tourism | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Store content for each section
+    const sections = {
+      section1: `
+     <!-- Top-centered big image -->
+<div style="text-align:center; margin:30px 0;">
+  <img src="images/illu.jpg" alt="tashiding" 
+       style="width:80%; max-width:900px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+</div>
+
+
+        <h2>Name of Manuscript </h2>
+        <p>Illuminated Prajnaparamita Sutra Folio
+</p>
+<h2>Estimated Date of Creation
+</h2>
+        <p>15th century CE
+</p>
+<h2>Estimated History of Creation</h2>
+<p>This manuscript was created in Tibet or Nepal during the late medieval period, likely commissioned
+by a royal or monastic patron. The text is written in gold ink on indigo-dyed paper, a luxurious
+format reserved for sacred scriptures. The language is Classical Tibetan, preserving one of Mahayana
+Buddhism’s most revered texts—the Prajnaparamita Sutra (Perfection of Wisdom).</p>
+<h2>Details of the Manuscript</h2>
+<p>The folio shows a seated <strong> Buddha Shakyamuni </strong> on the left and <strong>Goddess Prajnaparamita</strong> on the right,
+richly adorned and surrounded by celestial figures. The central panel carries lines of sutra text in
+elegant gold script. The deep blue background symbolizes purity and the infinite cosmos, while the
+imagery elevates the manuscript as both scripture and sacred art.</p>
+      `,
+      section2: `
+
+      <div style="text-align:center; margin:30px 0;">
+  <img src="images/leaf.jpg" alt="tashiding" 
+       style="width:80%; max-width:900px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+</div>
+        <h2>Name of Manuscript
+</h2>
+        <p> Tibetan Illuminated Sutra Leaf
+</p>
+<h2>Estimated Date of Creation</h2>
+<p>14th–15th century CE </p>
+<h2>Estimated History of Creation</h2>
+<p>This manuscript was likely created in a Tibetan monastic scriptorium, handwritten by monks trained
+in calligraphy. It is composed in Classical Tibetan, and reflects the flourishing of Buddhist scholastic
+and artistic traditions during the later diffusion of Buddhism in Tibet. Such manuscripts were often
+commissioned by noble patrons or monasteries to preserve key sutras.
+</p>
+<h>Details of the Manuscript</h>
+<p>The folio features a seated monk or lama figure painted in the left margin, framed by a halo and lotus
+throne, symbolizing enlightenment and spiritual authority. The script contains neatly aligned verses,
+possibly from a Prajnaparamita or tantric text, written in black ink with rubricated (red-highlighted)
+sections. The combination of text and imagery shows its dual purpose—as scripture for recitation
+and as a devotional object.</p>
+
+      `,
+      section3: `
+  <div style="text-align:center; margin:30px 0;">
+  <img src="images/oooooo.jpg" alt="tashiding" 
+       style="width:80%; max-width:900px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+</div>
+
+        <h2>Name of Manuscript</h2>
+        <p>Mongolian Protective Deities Scroll
+</p>
+<h2>Estimated Date of Creation
+</h2>
+<p>17th–18th century CE
+</p>
+<h2>Estimated History of Creation</h2>
+<p>This manuscript was likely produced in Mongolia during the spread of Tibetan Buddhism under the
+patronage of the Qing dynasty. Written in Classical Mongolian script, it may have been copied by
+monks or court scribes to preserve esoteric tantric teachings. Its creation reflects the fusion of
+Buddhist doctrine with indigenous shamanic imagery.
+</p>
+<h>Details of the Manuscript</h>
+<p>The folio depicts three wrathful guardian deities, each surrounded by flames and clouds, holding
+symbolic ritual objects such as skull cups and weapons. The illustrations convey protective power,
+intended to ward off evil forces. The accompanying text contains invocations or dhāraṇīs (protective
+chants), marking this as a ritual manuscript used for spiritual safeguarding.</p>
+      `,
+      section4: `
+
+      <div style="text-align:center; margin:30px 0;">
+  <img src="images/last.jpg" alt="tashiding" 
+       style="width:80%; max-width:900px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+</div>
+        <h2>Name of Manuscript</h2>
+        <p>Prajnaparamita Palm-Leaf Manuscript
+</p>
+<h2>Estimated Date of Creation</h2>
+<p>11th–12th century CE</p>
+<h2>Estimated History of Creation</h2>
+<p>This manuscript is believed to have been written by Buddhist scholars in eastern India, likely in the
+Bengal or Bihar region during the Pala dynasty. It is in Sanskrit, using early Bengali or Siddham script.
+The text is part of the Prajnaparamita Sutra, a revered Mahayana Buddhist scripture emphasizing the
+perfection of wisdom.</p>
+
+<h2>Details of the Manuscript</h2>
+
+  <p>The folio depicts a painted image of Buddha in red robes, seated in a graceful posture with a halo,
+accompanied by attendants. The script on both sides contains verses from the sutra, blending sacred
+text with devotional art. Such manuscripts were often created for ritual use, preservation of Buddhist
+philosophy, and as offerings in monasteries.</p>
+
+      `
+    };
+
+    function showContent(section) {
+      document.getElementById("content").innerHTML = sections[section];
+
+      // Update active link
+      document.querySelectorAll(".sidebar a").forEach(link => link.classList.remove("active"));
+      event.target.classList.add("active");
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
